@@ -7,7 +7,6 @@ const authCtrl = {
   },
 
   register: async (req, res) => {
-    //console.log("body", req.body)
     try {
       const { fullname, username, email, password, gender } = req.body;
 
@@ -42,9 +41,6 @@ const authCtrl = {
         password: passwordHash,
         gender,
       });
-
-      //console.log(newUser)
-
       const access_token = createAccessToken({ id: newUser._id });
       await newUser.save();
       res.status(201).json({
